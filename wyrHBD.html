@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>怡儒生日快乐 💜</title>
+
+<!-- 加载 Times New Roman 字体（适用于手机端） -->
+<link href="https://fonts.cdnfonts.com/css/times-new-roman" rel="stylesheet">
+
+<style>
+  body {
+    background: linear-gradient(135deg, #f5e6ff, #e6f2ff);
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Microsoft YaHei', sans-serif;
+  }
+
+  #start {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: plum;
+    color: white;
+    font-size: clamp(16px, 4vw, 22px);
+    border: none;
+    border-radius: 12px;
+    padding: clamp(10px, 3vw, 15px) clamp(25px, 6vw, 40px);
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  #start:active {
+    transform: translate(-50%, -50%) scale(0.98);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .tip-box {
+    position: absolute;
+    width: clamp(150px, 60vw, 350px);
+    height: clamp(60px, 22vw, 120px);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(14px, 3.5vw, 18px);
+    font-family: 'Times New Roman', 'Noto Serif', 'Songti SC', serif;
+    text-align: center;
+    padding: 8px;
+    word-wrap: break-word;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: scale(1.03); }
+  }
+</style>
+</head>
+<body>
+
+<button id="start">点我开启小寇准备的惊喜!💜</button>
+
+<script>
+const tips = [
+ '怡儒怡儒怡儒～','你是我最最最好的朋友！','I love you so.','要照顾好自己呀!',
+ '中考加油！','我们顶峰相见','你cos超美的!','怡儒天天开心!','要好好吃饭!',
+ '成年一起去新西兰呀!','我们要一直当好朋友!','怡儒怡儒我们喜欢你',
+ '要注意保暖呀!','愿意跟我分享烦心事嘛?','想你想你想你','暑假要不要一起去天津?',
+ '生日快乐呀！','我们要度过很多很多个生日！','今天开心嘛？','抱一抱','前尘似锦！',
+ '顺顺利利','好运常伴你身边','missing you','周末要好好放松，不要给自己太大压力',
+ '我相信你！','我会永远站在你身边','心情不好的时候就吃点巧克力吧',
+ '幸福请降临小怡手心','你是三叶草的第四瓣','你的真诚 善良 耐心 我细数我珍重',
+ '遇挚友，如逢春','缓慢又笨拙的路上，谢谢你陪我成长','The 12th year we know each other',
+ '^⌯𖥦⌯^੭','我们俩天下最最好','希望我能在你身边','愿你万事顺遂,平安喜乐',
+ '你的健康比其他重要的多','我很幸运能跟你做朋友','我们会有很多很多的十二年',
+ '姐不在的这几年你肯定很孤单吧','等我们成年了就去海边喝酒',
+ '压力大的话随时可以找我，我一直在','排名是世界上最不重要的事',
+ '我们互补又相似 有你 我才完整','我们友谊的小船要不断前行','想不想去野餐？',
+ '我会一直给你做小蛋糕','相遇已是上上签','我们要一起去很多很多的地方',
+ 'My Only','小小世界，开心至上','我们不会无话可说',
+ '思念无声，我们什么时候见面？','我们的友谊没有尽头 只有未完待续.',
+ '茫茫人海中，遇见你是我的幸运','happy birthday to u!','Welcome to your 15th!'
+];
+
+const colors = ['#FFF0F5','#E9F5FF','#F3E9FF','honeydew','cornsilk','#FFEEDC','whitesmoke','mintcream'];
+
+function randomColor() {
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+document.body.style.backgroundColor = randomColor();
+
+function randomTip() {
+  const div = document.createElement('div');
+  div.className = 'tip-box';
+  div.textContent = tips[Math.floor(Math.random() * tips.length)];
+  div.style.backgroundColor = randomColor();
+
+  const maxLeft = window.innerWidth - div.offsetWidth;
+  const maxTop = window.innerHeight - div.offsetHeight;
+  div.style.left = Math.random() * maxLeft + 'px';
+  div.style.top = Math.random() * maxTop + 'px';
+  document.body.appendChild(div);
+}
+
+document.getElementById('start').onclick = function() {
+  this.remove();
+  let count = 0;
+  const timer = setInterval(() => {
+    randomTip();
+    count++;
+    if (count >= 124) clearInterval(timer);
+  }, 120);
+};
+</script>
+
+</body>
+</html>
